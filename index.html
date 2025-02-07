@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/index.css">
+    <title>Memorize menu</title>
+</head>
+<body>
+
+    <main>
+        <div class="languages">
+            <img src="" alt="English">
+            <img src="" alt="Spanish">
+        </div>
+        <div class="menu">
+            <h1 class="title">How to play?</h1>
+            <p class="hel-text">Pay attetion at the sequence of lights and submit the sequence to complete the levels</p>
+            <button class="play" onclick="game()">Play</button>
+        </div>
+    </main>
+    <script type="module">
+
+        windows.game = function() {
+            window.location.href = `game.html?lang=${language}`;
+        }
+    </script>
+</body>
+</html>
