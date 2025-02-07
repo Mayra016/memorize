@@ -10,8 +10,8 @@
 
     <main>
         <div class="languages">
-            <img src="" alt="English">
-            <img src="" alt="Spanish">
+            <img src="" onclick="translationEN()" alt="English">
+            <img src="" onclick="translationES()" alt="Spanish">
         </div>
         <div class="menu">
             <h1 class="title">How to play?</h1>
@@ -20,6 +20,24 @@
         </div>
     </main>
     <script type="module">
+        import textES from './config/translationES';
+        import textEN from './config/translationEN';
+
+        var language = "EN";
+
+        window.translationES = function() {
+            document.querySelector(".title").innerText = textES.titleIndex;
+            document.querySelector(".help-text").innerText = textES.helpText;
+            document.querySelector(".play").innerText = textES.play;
+            language = "ES";
+        }
+
+        window.translationEN = function() {
+            document.querySelector(".title").innerText = textEN.titleIndex;
+            document.querySelector(".help-text").innerText = textEN.helpText;
+            document.querySelector(".play").innerText = textEN.play;
+            language = "EN";
+        }
 
         windows.game = function() {
             window.location.href = `game.html?lang=${language}`;
