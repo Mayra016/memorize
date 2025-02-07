@@ -8,10 +8,50 @@
 </head>
 <body>
     <main>
+        <div class="sequece-colors">
+            <div class="light">
+                
+            </div>
+        </div>
         <div class="buttons">
-            <div class="neon-circle"></div>
+            <button class="color-btns">
+                <div class="neon-circle red"></div>
+            </button>
+            
         </div>
         
     </main>
+    <script type="module">
+        import newLevel from "./services/levelGeneration.js";
+
+        // GLOBAL VARIABLES
+        var levelSequence = [];
+        var currentLevel = 1;
+        var colors = ["red", "yellow", "green", "blue", "purple", "pink", "orange", "white"];
+        var maxBtns = 4;
+
+        window.createLevel = function() {
+            maxBtns = currentLevel % 5 == 0 && currentLevel / 5 < 8 ? maxBtns + (currentLevel / 5) : maxBtns;
+            levelSequence = newLevel(currentLevel, maxBtns);
+            createLights();
+        }
+
+        window.createLights = async function() {
+            for (let i = 0; i < levelSequence.length; i++) {
+                document.querySelector(light).addClass("." + levelSequence[i]);
+                await sleep(2000);
+            }
+        }
+
+        window.createButtons = function() {
+            for (let i = 0; i < maxBtns; i++) {
+                let newBtn = document.createElement("button");
+                newBtn.addClass(".neon-circle");
+                newBtn.addClass("." + color[levelSequence[i]]);
+                document.querySelector(".buttons").appendChild(newBtn);
+            }         
+        }
+
+    </script>
 </body>
 </html>
