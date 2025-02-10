@@ -12,8 +12,8 @@
         <div class="languages">
             <img src="../assets/us.svg" onclick="translationEN()" alt="English">
             <img src="../assets/es.svg" onclick="translationES()" alt="Spanish">
-            <img src="../assets/de.svg" onclick="translationES()" alt="German">
-            <img src="../assets/br.svg" onclick="translationES()" alt="Portuguese">
+            <img src="../assets/de.svg" onclick="translationDE()" alt="German">
+            <img src="../assets/br.svg" onclick="translationPT()" alt="Portuguese">
         </div>
         <div class="menu">
             <h1 class="title">How to play?</h1>
@@ -24,6 +24,8 @@
     <script type="module">
         import textES from '../config/translationES.js';
         import textEN from '../config/translationEN.js';
+        import textDE from '../config/translationDE.js';
+        import textPT from '../config/translationPT.js';
 
         var language = "EN";
 
@@ -32,6 +34,20 @@
             document.querySelector(".help-text").innerText = textES.helpText;
             document.querySelector(".play").innerText = textES.play;
             language = "ES";
+        }
+
+        window.translationDE = function() {
+            document.querySelector(".title").innerText = textDE.titleIndex;
+            document.querySelector(".help-text").innerText = textDE.helpText;
+            document.querySelector(".play").innerText = textDE.play;
+            language = "DE";
+        }
+
+        window.translationPT = function() {
+            document.querySelector(".title").innerText = textPT.titleIndex;
+            document.querySelector(".help-text").innerText = textPT.helpText;
+            document.querySelector(".play").innerText = textPT.play;
+            language = "PT";
         }
 
         window.translationEN = function() {
