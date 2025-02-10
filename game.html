@@ -83,7 +83,7 @@
 
         window.createLevel = async function() {
             maxBtns = currentLevel % 5 == 0 && currentLevel / 5 < 8 ? maxBtns + (currentLevel / 5) : maxBtns;
-            levelSequence = newLevel(currentLevel, maxBtns);
+            levelSequence = newLevel(currentLevel, maxBtns, levelSequence);
             playerAnswer = [];
             document.querySelector(".buttons").style.display = "none";
             await createLights();
@@ -200,7 +200,8 @@
 
             if (allCorrect) {
                 score += 10;
-                //currentLevel++;
+                currentLevel++;
+                playerAnswer = [];
                 createLevel();    
             } else {
                 gameOver();
