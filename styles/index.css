@@ -3,13 +3,38 @@
 
 body {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.7) 130%), #737373;
+
+}
+
+@font-face {
+    font-family: 'Spicy-Rice';
+    src: url('../fonts/SpicyRice-Regular.ttf') format('truetype'); 
+}
+
+@font-face {
+    font-family: 'Bebas-Neue';
+    src: url('../fonts/BebasNeue-Regular.ttf') format('truetype');
+}
+
+.title {
+    font-family: 'Spicy-Rice';
+    font-size: 30px;
+    color: black;
+}
+
+.help-text {
+    font-family: 'Bebas-Neue';
+    font-size: 18px;
+    letter-spacing: 3px;
 }
 
 main {
     display: flex;
     flex-direction: column;
+    text-align: center;
+    align-content: center;
     text-align: center;
 }
 
@@ -21,26 +46,41 @@ button:hover {
 
 .languages {
     transition: transform .2s;
-    flex-direction: row;
-    margin: auto;
     background-color: transparent;
-    width: 80px;
-    height: 80px;
-    border: var(--dark-blue);
-    border-radius: 20px;
+    flex-direction: row;
+    text-align: end;
+    margin-right: 20px;
+}
+
+.languages img {
+    transition: transform .2s;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.languages img:hover {
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
 .menu {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.685);
     border-radius: 15px;
+    width: 60%;
+    justify-content: center;
+    margin: auto;
+    padding: 20px;
+    margin-top: 100px;
 }
 
 .play {
-    background-color: yellow;
+    background-color: rgb(0, 0, 0);
     border-radius: 15px;
     width: fit-content;
     border-color: aqua;
     border-width: 3px;
     transition: transform .2s;
-    
+    padding: 10px;
+    color: white;
 }

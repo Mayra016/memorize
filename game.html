@@ -38,7 +38,7 @@
         var levelSequence = [];
         var currentLevel = 1;
         var colors = ["red", "yellow", "green", "blue", "purple", "pink", "orange", "white"];
-        var maxBtns = 8;
+        var maxBtns = 4;
         var playerAnswer = [];
         var score = 0;
         var alreadyPlayed = false;
@@ -53,7 +53,7 @@
         }
 
         window.createLevel = async function() {
-            maxBtns = currentLevel % 5 === 0 && currentLevel / 5 < 8 ? maxBtns + (currentLevel / 5) : maxBtns;
+            maxBtns = currentLevel % 5 == 0 && currentLevel / 5 < 8 ? maxBtns + (currentLevel / 5) : maxBtns;
             levelSequence = newLevel(currentLevel, maxBtns);
             playerAnswer = [];
             document.querySelector(".buttons").style.display = "none";
@@ -85,6 +85,7 @@
         }
 
         window.createButtons = function() {
+
             if (alreadyPlayed == false) {
                 document.querySelector(".buttons").innerHTML = ''; 
 
@@ -117,6 +118,30 @@
 
                 alreadyPlayed = true;  
             }
+            if (currentLevel % 5 == 0) {
+                let index = 3 + (currentLevel / 5);
+                let newBtn = document.createElement("button");
+                newBtn.classList.add("button");  
+                newBtn.classList.add(colors[index]);
+                newBtn.id = colors[index];
+                newBtn.onclick = () => playerInput(newBtn.id);
+                
+                if (colors[index] == "blue") {
+                    newBtn.style.backgroundColor = 'rgba(0, 255, 255, 0.8)';
+                } else if (colors[index] == "yellow") {
+                    newBtn.style.backgroundColor = 'rgb(255, 213, 0)';
+                } else if (colors[index] == "green") {
+                    newBtn.style.backgroundColor = 'rgb(68, 255, 0)';
+                } else if (colors[index] == "purple") {
+                    newBtn.style.backgroundColor = 'rgb(76, 0, 255)';
+                } else if (colors[index] == "pink") {
+                    newBtn.style.backgroundColor = 'rgb(255, 0, 217)';
+                } else if (colors[index] == "orange") {
+                    newBtn.style.backgroundColor = 'rgb(255, 115, 0)';
+                } else if (colors[index] == "red" || colors[index] == "white") {
+                    newBtn.style.backgroundColor = newBtn.id;
+                }   
+            }                
         };
 
 
@@ -146,6 +171,7 @@
 
             if (allCorrect) {
                 score += 10;
+                //currentLevel++;
                 createLevel();    
             } else {
                 gameOver();
@@ -161,7 +187,7 @@
             playerAnswer = [];
             document.querySelector(".score-points").innerText = score;
             document.querySelector(".gameOver").style.display = "flex";
-            alreadyPlayed = true;
+            alreadyPlayed = false;
         }
 
         document.addEventListener("DOMContentLoaded", function() {
