@@ -64,9 +64,9 @@
 }
 
 .purple {
-    background-color: rgb(25, 0, 255);
+    background-color: rgb(76, 0, 255);
     box-shadow: 
-      0 0 10px rgba(81, 0, 255, 0.8), 
+      0 0 10px rgba(149, 111, 254, 0.8), 
       0 0 40px rgba(93, 0, 255, 0.6), 
       0 0 80px rgba(0, 0, 255, 0.4);
     animation: flickerPurple 1.5s infinite alternate;  
@@ -126,9 +126,9 @@
 }
  
 @keyframes flickerPurple {
-    0% { box-shadow: 0 0 10px rgba(0, 4, 255, 0.8), 0 0 40px rgba(38, 0, 255, 0.6), 0 0 80px rgba(25, 0, 255, 0.4); }
-    50% { box-shadow: 0 0 15px rgb(0, 21, 255), 0 0 50px rgba(0, 8, 255, 0.7), 0 0 100px rgba(21, 0, 255, 0.5); }
-    100% { box-shadow: 0 0 8px rgba(51, 0, 255, 0.7), 0 0 35px rgba(4, 0, 255, 0.5), 0 0 70px rgba(51, 0, 255, 0.3); }
+    0% { box-shadow: 0 0 10px rgba(85, 0, 255, 0.8), 0 0 40px rgba(104, 78, 254, 0.6), 0 0 80px rgba(101, 49, 244, 0.4); }
+    50% { box-shadow: 0 0 15px rgb(111, 0, 255), 0 0 50px rgba(97, 72, 237, 0.7), 0 0 100px rgba(81, 0, 255, 0.5); }
+    100% { box-shadow: 0 0 8px rgba(80, 39, 245, 0.7), 0 0 35px rgba(113, 40, 240, 0.5), 0 0 70px rgba(120, 75, 255, 0.3); }
 }
 
 @keyframes flickerPink {

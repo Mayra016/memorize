@@ -53,7 +53,7 @@
         }
 
         window.createLevel = async function() {
-            maxBtns = currentLevel % 5 == 0 && currentLevel / 5 < 8 ? maxBtns + (currentLevel / 5) : maxBtns;
+            maxBtns = currentLevel % 5 === 0 && currentLevel / 5 < 8 ? maxBtns + (currentLevel / 5) : maxBtns;
             levelSequence = newLevel(currentLevel, maxBtns);
             playerAnswer = [];
             document.querySelector(".buttons").style.display = "none";
@@ -86,11 +86,11 @@
 
         window.createButtons = function() {
             if (alreadyPlayed == false) {
-                document.querySelector(".buttons").innerHTML = '';  // Clear existing buttons before creating new ones
+                document.querySelector(".buttons").innerHTML = ''; 
 
                 for (let i = 0; i < maxBtns; i++) {
                     let newBtn = document.createElement("button");
-                    newBtn.classList.add("button");  // Correct class name
+                    newBtn.classList.add("button");  
                     newBtn.classList.add(colors[i]);
                     newBtn.id = colors[i];
                     newBtn.onclick = () => playerInput(newBtn.id);
@@ -103,7 +103,7 @@
                     } else if (colors[i] == "green") {
                         newBtn.style.backgroundColor = 'rgb(68, 255, 0)';
                     } else if (colors[i] == "purple") {
-                        newBtn.style.backgroundColor = 'rgb(25, 0, 255)';
+                        newBtn.style.backgroundColor = 'rgb(76, 0, 255)';
                     } else if (colors[i] == "pink") {
                         newBtn.style.backgroundColor = 'rgb(255, 0, 217)';
                     } else if (colors[i] == "orange") {
@@ -115,7 +115,7 @@
                     document.querySelector(".buttons").appendChild(newBtn);
                 }
 
-                alreadyPlayed = true;  // Mark that the game has started and the buttons are created
+                alreadyPlayed = true;  
             }
         };
 
