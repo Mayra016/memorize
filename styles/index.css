@@ -1,0 +1,40 @@
+
+/* ELEMENT  STYLES */
+
+main {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+
+}
+
+.languages {
+    transition: transform .2s;
+    flex-direction: row;
+    margin: auto;
+    background-color: transparent;
+    width: 80px;
+    height: 80px;
+    border: var(--dark-blue);
+    border-radius: 20px;
+}
+
+.menu {
+    background-color: white;
+    border-radius: 15px;
+}
+
+.play {
+    background-color: yellow;
+    border-radius: 15px;
+    width: fit-content;
+    border-color: aqua;
+    border-width: 3px;
+    transition: transform .2s;
+    
+}

@@ -20,8 +20,8 @@
         </div>
     </main>
     <script type="module">
-        import textES from './config/translationES';
-        import textEN from './config/translationEN';
+        import textES from '../config/translationES.js';
+        import textEN from '../config/translationEN.js';
 
         var language = "EN";
 
@@ -39,7 +39,7 @@
             language = "EN";
         }
 
-        windows.game = function() {
+        window.game = function() {
             window.location.href = `game.html?lang=${language}`;
         }
     </script>

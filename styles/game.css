@@ -1,138 +1,68 @@
 
-/* LIGHTS */
+body {
+    background-color: rgb(0, 0, 0);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
+    justify-content: center;
+    justify-items: center;
+}
 
 .neon-circle {
     width: 100px;
     height: 100px;
-    background-color: rgba(0, 255, 255, 0.8);
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 
-      0 0 10px rgba(0, 255, 255, 0.8), 
-      0 0 40px rgba(0, 255, 255, 0.6), 
-      0 0 80px rgba(0, 255, 255, 0.4);
-    animation: flickerBlue 1.5s infinite alternate;
-  }
-  
-.circle {
-    width: 100px;
-    height: 100px;
-    background-color: rgba(0, 255, 255, 0.8);
-    border-radius: 50%;
+    border-radius: 50px;
+    display: flex;    
+    margin-bottom: 60px;
+    margin-top: 50px;
 }
 
-.red {
-    background-color: red;
-    box-shadow: 
-      0 0 10px rgba(255, 0, 0, 0.8), 
-      0 0 40px rgba(255, 0, 0, 0.6), 
-      0 0 80px rgba(255, 0, 0, 0.4);
-    animation: flickerRed 1.5s infinite alternate;  
+.buttons {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    border-radius: 50px;
+    text-align: center;
+    margin: auto;
 }
 
-.yellow {
-    background-color: rgb(255, 213, 0);
-    box-shadow: 
-      0 0 10px rgba(255, 208, 0, 0.8), 
-      0 0 40px rgba(255, 204, 0, 0.6), 
-      0 0 80px rgba(255, 183, 0, 0.4);
-    animation: flickerYellow 1.5s infinite alternate;  
+.sequence-colors {
+    width: 80%;
+    height: fit-content;
 }
 
-.green {
-    background-color: rgb(68, 255, 0);
-    box-shadow: 
-      0 0 10px rgba(0, 255, 8, 0.8), 
-      0 0 40px rgba(0, 255, 4, 0.6), 
-      0 0 80px rgba(13, 255, 0, 0.4);
-    animation: flickerGreen 1.5s infinite alternate;  
+.gameOver {
+    display: none;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 60px;
+    background-color: rgb(119, 199, 249);
+    border-radius: 30px;
+    padding: 30px;
+    width: fit-content;
+    box-shadow: 5px 5px 5px rgb(0,0,0, 0.6);
 }
 
-.purple {
-    background-color: rgb(25, 0, 255);
-    box-shadow: 
-      0 0 10px rgba(81, 0, 255, 0.8), 
-      0 0 40px rgba(93, 0, 255, 0.6), 
-      0 0 80px rgba(0, 0, 255, 0.4);
-    animation: flickerPurple 1.5s infinite alternate;  
+.score-points {
+    font-size: 40px;
+    margin-top: 10px;
 }
 
-.pink {
-    background-color: rgb(255, 0, 217);
-    box-shadow: 
-      0 0 10px rgba(242, 0, 255, 0.8), 
-      0 0 40px rgba(255, 0, 255, 0.6), 
-      0 0 80px rgba(221, 0, 255, 0.4);
-    animation: flickerPink 1.5s infinite alternate;  
+button {
+    width: 50px;
+    height: 50px;
+    margin-top: 300px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgb(0,0,0, 0.6);
+    border-color: white;
+    border-width: 3px 0px 0px 3px;
 }
 
-.orange {
-    background-color: rgb(255, 115, 0);
-    box-shadow: 
-      0 0 10px rgba(255, 123, 0, 0.8), 
-      0 0 40px rgba(255, 119, 0, 0.6), 
-      0 0 80px rgba(255, 115, 0, 0.4);
-    animation: flickerOrange 1.5s infinite alternate;  
-}
-
-.white {
-    background-color: rgb(255, 255, 255);
-    box-shadow: 
-      0 0 10px rgba(255, 255, 255, 0.8), 
-      0 0 40px rgba(255, 255, 255, 0.6), 
-      0 0 80px rgba(255, 255, 255, 0.4);
-    animation: flickerWhite 1.5s infinite alternate;  
-}
-
-  
-/* Flickering effect for lights*/
-@keyframes flickerBlue {
-    0% { box-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.6), 0 0 80px rgba(0, 255, 255, 0.4); }
-    50% { box-shadow: 0 0 15px rgba(0, 255, 255, 1), 0 0 50px rgba(0, 255, 255, 0.7), 0 0 100px rgba(0, 255, 255, 0.5); }
-    100% { box-shadow: 0 0 8px rgba(0, 255, 255, 0.7), 0 0 35px rgba(0, 255, 255, 0.5), 0 0 70px rgba(0, 255, 255, 0.3); }
-}
-
-@keyframes flickerRed {
-    0% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 40px rgba(255, 0, 0, 0.6), 0 0 80px rgba(255, 0, 0, 0.4); }
-    50% { box-shadow: 0 0 15px rgb(255, 0, 0), 0 0 50px rgba(255, 0, 0, 0.7), 0 0 100px rgba(255, 0, 0, 0.5); }
-    100% { box-shadow: 0 0 8px rgba(255, 0, 0, 0.7), 0 0 35px rgba(255, 0, 0, 0.5), 0 0 70px rgba(255, 0, 0, 0.3); }
-}
-
-@keyframes flickerYellow {
-    0% { box-shadow: 0 0 10px rgba(255, 187, 0, 0.8), 0 0 40px rgba(255, 174, 0, 0.6), 0 0 80px rgba(255, 187, 0, 0.4); }
-    50% { box-shadow: 0 0 15px rgb(255, 170, 0), 0 0 50px rgba(255, 187, 0, 0.7), 0 0 100px rgba(255, 187, 0, 0.5); }
-    100% { box-shadow: 0 0 8px rgba(255, 183, 0, 0.7), 0 0 35px rgba(255, 166, 0, 0.5), 0 0 70px rgba(255, 166, 0, 0.3); }
-}
-
-@keyframes flickerGreen {
-    0% { box-shadow: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 40px rgba(30, 255, 0, 0.6), 0 0 80px rgba(30, 255, 0, 0.4); }
-    50% { box-shadow: 0 0 15px rgb(34, 255, 0), 0 0 50px rgba(17, 255, 0, 0.7), 0 0 100px rgba(17, 255, 0, 0.5); }
-    100% { box-shadow: 0 0 8px rgba(0, 255, 38, 0.7), 0 0 35px rgba(0, 255, 8, 0.5), 0 0 70px rgba(21, 255, 0, 0.3); }
-}
- 
-@keyframes flickerPurple {
-    0% { box-shadow: 0 0 10px rgba(0, 4, 255, 0.8), 0 0 40px rgba(38, 0, 255, 0.6), 0 0 80px rgba(25, 0, 255, 0.4); }
-    50% { box-shadow: 0 0 15px rgb(0, 21, 255), 0 0 50px rgba(0, 8, 255, 0.7), 0 0 100px rgba(21, 0, 255, 0.5); }
-    100% { box-shadow: 0 0 8px rgba(51, 0, 255, 0.7), 0 0 35px rgba(4, 0, 255, 0.5), 0 0 70px rgba(51, 0, 255, 0.3); }
-}
-
-@keyframes flickerPink {
-    0% { box-shadow: 0 0 10px rgba(255, 0, 251, 0.8), 0 0 40px rgba(247, 0, 255, 0.6), 0 0 80px rgba(247, 0, 255, 0.4); }
-    50% { box-shadow: 0 0 15px rgb(225, 0, 255), 0 0 50px rgba(255, 0, 225, 0.7), 0 0 100px rgba(255, 0, 255, 0.5); }
-    100% { box-shadow: 0 0 8px rgba(255, 0, 255, 0.7), 0 0 35px rgba(238, 0, 255, 0.5), 0 0 70px rgba(238, 0, 255, 0.3); }
-}
-
-@keyframes flickerOrange {
-    0% { box-shadow: 0 0 10px rgba(255, 98, 0, 0.8), 0 0 40px rgba(255, 111, 0, 0.6), 0 0 80px rgba(255, 140, 0, 0.4); }
-    50% { box-shadow: 0 0 15px rgb(255, 123, 0), 0 0 50px rgba(255, 123, 0, 0.7), 0 0 100px rgba(255, 123, 0, 0.5); }
-    100% { box-shadow: 0 0 8px rgba(255, 119, 0, 0.7), 0 0 35px rgba(255, 119, 0, 0.5), 0 0 70px rgba(255, 106, 0, 0.3); }
-}
-
-@keyframes flickerWhite {
-    0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6), 0 0 80px rgba(255, 255, 255, 0.4); }
-    50% { box-shadow: 0 0 15px rgb(255, 255, 255), 0 0 50px rgba(253, 253, 253, 0.7), 0 0 100px rgba(255, 255, 255, 0.5); }
-    100% { box-shadow: 0 0 8px rgba(255, 255, 255, 0.7), 0 0 35px rgba(255, 255, 255, 0.5), 0 0 70px rgba(255, 255, 255, 0.3); }
+.none {
+    display: none;
 }

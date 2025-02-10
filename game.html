@@ -3,21 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/game.css">
+    <link rel="stylesheet" href="./styles/lights.css">
     <title>Memorize Game</title>
 </head>
 <body>
     <main>
         <div class="sequece-colors">
-            <div class="light">
-                
-            </div>
+            <div id="light-red" class="neon-circle red none"></div>
+            <div id="light-blue" class="neon-circle blue none"></div>
+            <div id="light-yellow" class="neon-circle yellow none"></div>
+            <div id="light-green" class="neon-circle green none"></div>
+            <div id="light-purple" class="neon-circle purple none"></div>
+            <div id="light-pink" class="neon-circle pink none"></div>
+            <div id="light-orange" class="neon-circle orange none"></div>
+            <div id="light-white" class="neon-circle white none"></div>
         </div>
         <div class="buttons">
-            <button class="color-btns">
-                <div class="neon-circle red"></div>
-            </button>
             
+        </div>
+        <div class="gameOver">
+            <h1>Your score was <h1 class="score-points"></h1></h1>
+            <div>
+                <button class="play" onclick="playAgain()">Play again</button>
+            </div>       
         </div>
         
     </main>
@@ -29,27 +39,137 @@
         var currentLevel = 1;
         var colors = ["red", "yellow", "green", "blue", "purple", "pink", "orange", "white"];
         var maxBtns = 4;
+        var playerAnswer = [];
+        var score = 0;
+        var alreadyPlayed = false;
 
-        window.createLevel = function() {
-            maxBtns = currentLevel % 5 == 0 && currentLevel / 5 < 8 ? maxBtns + (currentLevel / 5) : maxBtns;
-            levelSequence = newLevel(currentLevel, maxBtns);
-            createLights();
+        window.playAgain = async function() {
+            score = 0;
+            maxBtns = 4;
+            currentLevel = 1;
+            document.querySelector(".gameOver").style.display = "none";
+            document.querySelector(".buttons").style.display = "none";
+            createLevel();
         }
 
+        window.createLevel = async function() {
+            maxBtns = currentLevel % 5 == 0 && currentLevel / 5 < 8 ? maxBtns + (currentLevel / 5) : maxBtns;
+            levelSequence = newLevel(currentLevel, maxBtns);
+            playerAnswer = [];
+            document.querySelector(".buttons").style.display = "none";
+            await createLights();
+            createButtons();
+            document.querySelector(".buttons").style.display = "flex";
+            document.querySelector(".gameOver").style.display = "none";
+        }
+
+        /* LEVEL GENERATION */
+
         window.createLights = async function() {
+            let x = 0;
+
             for (let i = 0; i < levelSequence.length; i++) {
-                document.querySelector(light).addClass("." + levelSequence[i]);
-                await sleep(2000);
+
+                let light = document.getElementById("light-" + levelSequence[i]);
+
+                if (light) { 
+                    light.style.display = "flex";
+                    await sleep(2000);
+                    light.style.display = "none";
+                }
+                await sleep(500);
+                console.log("color : ", levelSequence[i]);       
             }
+
+
         }
 
         window.createButtons = function() {
-            for (let i = 0; i < maxBtns; i++) {
-                let newBtn = document.createElement("button");
-                newBtn.addClass(".neon-circle");
-                newBtn.addClass("." + color[i]);
-                document.querySelector(".buttons").appendChild(newBtn);
-            }         
+            if (alreadyPlayed == false) {
+                document.querySelector(".buttons").innerHTML = '';  // Clear existing buttons before creating new ones
+
+                for (let i = 0; i < maxBtns; i++) {
+                    let newBtn = document.createElement("button");
+                    newBtn.classList.add("button");  // Correct class name
+                    newBtn.classList.add(colors[i]);
+                    newBtn.id = colors[i];
+                    newBtn.onclick = () => playerInput(newBtn.id);
+
+                    // Assign colors dynamically
+                    if (colors[i] == "blue") {
+                        newBtn.style.backgroundColor = 'rgba(0, 255, 255, 0.8)';
+                    } else if (colors[i] == "yellow") {
+                        newBtn.style.backgroundColor = 'rgb(255, 213, 0)';
+                    } else if (colors[i] == "green") {
+                        newBtn.style.backgroundColor = 'rgb(68, 255, 0)';
+                    } else if (colors[i] == "purple") {
+                        newBtn.style.backgroundColor = 'rgb(25, 0, 255)';
+                    } else if (colors[i] == "pink") {
+                        newBtn.style.backgroundColor = 'rgb(255, 0, 217)';
+                    } else if (colors[i] == "orange") {
+                        newBtn.style.backgroundColor = 'rgb(255, 115, 0)';
+                    } else if (colors[i] == "red" || colors[i] == "white") {
+                        newBtn.style.backgroundColor = newBtn.id;
+                    }
+
+                    document.querySelector(".buttons").appendChild(newBtn);
+                }
+
+                alreadyPlayed = true;  // Mark that the game has started and the buttons are created
+            }
+        };
+
+
+        /* GET PLAYER INPUT */
+
+        window.playerInput = function(color) {
+            console.log("button pressed: ", color);
+            playerAnswer.push(color);
+            if (playerAnswer.length >= levelSequence.length) {
+                isCorrect();
+            }
+        }
+
+        /* CHECK PLAYER'S ANSWER */ 
+
+        window.isCorrect = function() {
+            console.log("is correct", playerAnswer);
+            console.log("is correct level", levelSequence);
+            console.log("level sequence length", levelSequence.length);
+            let allCorrect = true;
+
+            for (let i = 0; i < levelSequence.length; i++) {
+                if (playerAnswer[i] != levelSequence[i]) {
+                    allCorrect = false;   
+                }
+            }
+
+            if (allCorrect) {
+                score += 10;
+                createLevel();    
+            } else {
+                gameOver();
+            }
+
+        }
+
+        window.gameOver = function() {
+            document.querySelector(".buttons").style.display = "none";
+            levelSequence = [];
+            currentLevel = 1;
+            maxBtns = 4;
+            playerAnswer = [];
+            document.querySelector(".score-points").innerText = score;
+            document.querySelector(".gameOver").style.display = "flex";
+            alreadyPlayed = true;
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            createLevel();
+        });
+        
+        window.sleep = function(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
         }
 
     </script>

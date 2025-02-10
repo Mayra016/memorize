@@ -4,7 +4,17 @@ export default function newLevel(currentLevel, maxBtns) {
     let levelSequence = [];
 
     for (let i = 0; i < maxSequence; i++) {
-        levelSequence[i] = colors[randomIndex = Math.floor(Math.random() * (maxBtns - 1))];
+        let randomIndex;
+
+        do {
+            randomIndex = Math.floor(Math.random() * maxBtns);
+        } while (
+            i >= 2 &&
+            levelSequence[i - 2] === colors[randomIndex] &&
+            levelSequence[i - 1] === colors[randomIndex]
+        );
+
+        levelSequence[i] = colors[randomIndex];
     }
 
     return levelSequence;
