@@ -69,6 +69,13 @@ button {
     border-width: 3px 0px 0px 3px;
 }
 
+.lost-btns {
+    display: flex;
+    margin-top: -10px;
+    flex-direction: row;
+    gap: 30px;
+}
+
 .none {
     display: none;
 }

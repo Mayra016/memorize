@@ -24,15 +24,44 @@
             
         </div>
         <div class="gameOver">
-            <h1>Your score was <h1 class="score-points"></h1></h1>
-            <div>
-                <button class="play" onclick="playAgain()">Play again</button>
-            </div>       
+            <h1 class="score help-text">Your score was <h1 class="score-points title"></h1></h1>
+            <div class="lost-btns">
+                <button class="play title" onclick="playAgain()">Play again</button>
+                <button class="play title" onclick="menu()">Menu</button>
+            </div>    
         </div>
         
     </main>
     <script type="module">
         import newLevel from "./services/levelGeneration.js";
+        import textES from '../config/translationES.js';
+        import textEN from '../config/translationEN.js';
+        import textDE from '../config/translationDE.js';
+        import textPT from '../config/translationPT.js';
+
+        // Get language 
+        const urlParams = new URLSearchParams(window.location.search);
+        const language = urlParams.get('lang'); 
+
+        if (language == "ES") {
+            document.querySelector(".score").innerText = textES.yourScore;
+            document.querySelector(".play").innerText = textES.playAgain;
+        }
+
+        if (language == "EN") {
+            document.querySelector(".score").innerText = textEN.yourScore;
+            document.querySelector(".play").innerText = textEN.playAgain;
+        }
+
+        if (language == "DE") {
+            document.querySelector(".score").innerText = textDE.yourScore;
+            document.querySelector(".play").innerText = textDE.playAgain;
+        }
+
+        if (language == "PT") {
+            document.querySelector(".score").innerText = textPT.yourScore;
+            document.querySelector(".play").innerText = textPT.playAgain;
+        }
 
         // GLOBAL VARIABLES
         var levelSequence = [];
@@ -196,6 +225,10 @@
         
         window.sleep = function(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        window.menu = function() {
+            window.location.href =  `index.html?lang=${language}`;
         }
 
     </script>
