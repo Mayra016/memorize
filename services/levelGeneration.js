@@ -7,7 +7,7 @@ export default function newLevel(currentLevel, maxBtns, currentSequence) {
         let randomIndex;
 
         do {
-            randomIndex = Math.floor(Math.random() * maxBtns);
+            randomIndex = Math.floor(Math.random() * Math.min(maxBtns, colors.length));
         } while (
             currentSequence.length >= 2 &&
             currentSequence[currentSequence.length - 2] === colors[randomIndex] &&
@@ -23,7 +23,7 @@ export default function newLevel(currentLevel, maxBtns, currentSequence) {
         let randomIndex;
 
         do {
-            randomIndex = Math.floor(Math.random() * maxBtns);
+            randomIndex = Math.floor(Math.random() * Math.min(maxBtns, colors.length));
         } while (
             i >= 2 &&
             levelSequence[i - 2] === colors[randomIndex] &&

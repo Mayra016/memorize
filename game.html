@@ -67,7 +67,7 @@
         var levelSequence = [];
         var currentLevel = 1;
         var colors = ["red", "yellow", "green", "blue", "purple", "pink", "orange", "white"];
-        var maxBtns = 4;
+        var maxBtns = 5;
         var playerAnswer = [];
         var score = 0;
         var alreadyPlayed = false;
@@ -82,7 +82,7 @@
         }
 
         window.createLevel = async function() {
-            maxBtns = currentLevel % 5 == 0 && currentLevel / 5 < 8 ? maxBtns + (currentLevel / 5) : maxBtns;
+            maxBtns = Math.min(7, Math.floor(4 + (currentLevel / 5)));
             levelSequence = newLevel(currentLevel, maxBtns, levelSequence);
             playerAnswer = [];
             document.querySelector(".buttons").style.display = "none";
@@ -138,8 +138,11 @@
                         newBtn.style.backgroundColor = 'rgb(255, 0, 217)';
                     } else if (colors[i] == "orange") {
                         newBtn.style.backgroundColor = 'rgb(255, 115, 0)';
-                    } else if (colors[i] == "red" || colors[i] == "white") {
-                        newBtn.style.backgroundColor = newBtn.id;
+                    } else if (colors[i] == "red") {
+                        newBtn.style.backgroundColor = 'rgb(255, 0, 0)';
+                    }
+                    else if (colors[i] == "white") {
+                        newBtn.style.backgroundColor = 'rgb(255, 255, 255)';
                     }
 
                     document.querySelector(".buttons").appendChild(newBtn);
@@ -147,8 +150,8 @@
 
                 alreadyPlayed = true;  
             }
-            if (currentLevel % 5 == 0) {
-                let index = 3 + (currentLevel / 5);
+            if (currentLevel % 5 == 0 &&  3 + (currentLevel / 5) <= 7) {
+                let index = Math.min(7, Math.floor(3 + (currentLevel / 5)));
                 let newBtn = document.createElement("button");
                 newBtn.classList.add("button");  
                 newBtn.classList.add(colors[index]);
@@ -167,9 +170,14 @@
                     newBtn.style.backgroundColor = 'rgb(255, 0, 217)';
                 } else if (colors[index] == "orange") {
                     newBtn.style.backgroundColor = 'rgb(255, 115, 0)';
-                } else if (colors[index] == "red" || colors[index] == "white") {
-                    newBtn.style.backgroundColor = newBtn.id;
-                }   
+                } else if (colors[index] == "red") {
+                    newBtn.style.backgroundColor = 'rgb(255, 0, 0)';
+                }
+                else if (colors[index] == "white") {
+                    newBtn.style.backgroundColor = 'rgb(255, 255, 255)';
+                }
+
+                document.querySelector(".buttons").appendChild(newBtn);   
             }                
         };
 
@@ -203,6 +211,7 @@
                 currentLevel++;
                 playerAnswer = [];
                 createLevel();    
+                console.log("LEVEL: ", currentLevel);
             } else {
                 gameOver();
             }
