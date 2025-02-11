@@ -34,10 +34,10 @@
     </main>
     <script type="module">
         import newLevel from "./services/levelGeneration.js";
-        import textES from '../config/translationES.js';
-        import textEN from '../config/translationEN.js';
-        import textDE from '../config/translationDE.js';
-        import textPT from '../config/translationPT.js';
+        import textES from './config/translationES.js';
+        import textEN from './config/translationEN.js';
+        import textDE from './config/translationDE.js';
+        import textPT from './config/translationPT.js';
 
         // Get language 
         const urlParams = new URLSearchParams(window.location.search);
@@ -106,8 +106,7 @@
                     await sleep(2000);
                     light.style.display = "none";
                 }
-                await sleep(500);
-                console.log("color : ", levelSequence[i]);       
+                await sleep(500);    
             }
 
 
@@ -185,7 +184,6 @@
         /* GET PLAYER INPUT */
 
         window.playerInput = function(color) {
-            console.log("button pressed: ", color);
             playerAnswer.push(color);
             if (playerAnswer.length >= levelSequence.length) {
                 isCorrect();
@@ -195,9 +193,6 @@
         /* CHECK PLAYER'S ANSWER */ 
 
         window.isCorrect = function() {
-            console.log("is correct", playerAnswer);
-            console.log("is correct level", levelSequence);
-            console.log("level sequence length", levelSequence.length);
             let allCorrect = true;
 
             for (let i = 0; i < levelSequence.length; i++) {
@@ -211,7 +206,6 @@
                 currentLevel++;
                 playerAnswer = [];
                 createLevel();    
-                console.log("LEVEL: ", currentLevel);
             } else {
                 gameOver();
             }
